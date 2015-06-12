@@ -403,8 +403,8 @@
             });
         }
 
-        $('head').append('<link rel="stylesheet" type="text/css" href="switcher/switcher.css">');
-        $('head').append('<script type="text/javascript" src="switcher/switcher.js"></script>');
+//        $('head').append('<link rel="stylesheet" type="text/css" href="switcher/switcher.css">');
+//        $('head').append('<script type="text/javascript" src="switcher/switcher.js"></script>');
 
     });
 
