@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NID NIFT NATA Coaching and Materials</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <!--Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CRaleway:400,600' rel='stylesheet' type='text/css'>
+
+    <!--jQuery and plugins-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/backbone-min.js"></script>
+    <script type="text/javascript" src="js/backbone-paginated-collection.js"></script>
+    <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--Icons and Animates-->
+    <link rel="stylesheet" href="plugins/elegant-font/style.css">
+    <link rel="stylesheet" href="plugins/et-line-font/style.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+
+    <!--Media Element Player-->
+    <link rel="stylesheet" href="plugins/mediaelement/mediaelementplayer.min.css">
+    <link rel="stylesheet" href="css/mediaelementplayer.css">
+    <script type="text/javascript" src="plugins/mediaelement/mediaelement-and-player.min.js"></script>
+
+    <!--Owl Carousel-->
+    <link rel="stylesheet" href="plugins/owl-carousel/owl.carousel.css">
+    <script type="text/javascript" src="plugins/owl-carousel/owl.carousel.min.js"></script>
+
+    <!--Magnific lightbox-->
+    <link rel="stylesheet" href="plugins/magnific/magnific-popup.css">
+    <script type="text/javascript" src="plugins/magnific/jquery.magnific-popup.min.js"></script>
+
+    <!--Masterslider-->
+    <link rel="stylesheet" href="plugins/masterslider/style/masterslider.css">
+    <link rel="stylesheet" href="plugins/masterslider/skins/default/style.css">
+    <link rel="stylesheet" href="css/masterslider.css">
+    <script type="text/javascript" src="plugins/masterslider/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="plugins/masterslider/masterslider.min.js"></script>
+
+    <!--Google Map-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQqYj4InzdbPwz-Kplwf9kltH5FrE5t5M&amp;sensor=false"></script>
+
+    <!--Stylesheet-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--Template: Item style 1 - COLORED CATEGORY-->
+    <script type="text/template" id="tpl-item-style1">
+        <div class="grid-item tpl-item-style1 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <div class="background" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);"></div>
+                <% if (typeof(categories) !="undefined" ) { %>
+                    <a href="javascript:;" class="category" style="background-color:<%= _.last(categories).color %>;">
+                        <%=_ .last(categories).title %>
+                    </a>
+                    <% } %>
+                        <div class="entry-item">
+                            <span class="format <%= format %>"></span>
+                            <h2><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h2>
+                            <span class="date"><%= date %></span>
+                        </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 2 - SWAP IMAGE-->
+    <script type="text/template" id="tpl-item-style2">
+        <div class="grid-item tpl-item-style2 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);">
+            <span style="background-image:url(<%= typeof(_logo)!== 'undefined' ?  _logo : '' %>);"></span>
+        </a>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 3 - BOOK COVER-->
+    <script type="text/template" id="tpl-item-style3">
+        <div class="grid-item tpl-item-style3 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <div class="image" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);"></div>
+                <div class="hover">
+                    <div class="overlay" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>"></div>
+                    <span class="inner-table">
+                <span class="inner-row"><h3><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h3></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 4 - PORTFOLIO with lightbox-->
+    <script type="text/template" id="tpl-item-style4">
+        <div class="grid-item tpl-item-style4 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <div class="image" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);"></div>
+                <div class="hover">
+                    <div class="overlay" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>"></div>
+                    <span class="inner-table">
+                <span class="inner-row">
+                    <span class="link-icon">
+                        <a href="javascript:;"><i class="glyphicon glyphicon-link"></i></a>&nbsp;
+                        <a href="javascript:;" class="popup"><i class="glyphicon glyphicon-search"></i></a>
+                    </span>
+                    <h3><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h3>
+                    </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 5 - TITLE CAT HOVER-->
+    <script type="text/template" id="tpl-item-style5">
+        <div class="grid-item tpl-item-style5 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <div class="background" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);"></div>
+                <div class="entry-hover">
+                    <div class="inner-table">
+                        <div class="inner-row">
+                            <% if (typeof(categories) !="undefined" ) { %>
+                                <div class="categories">
+                                    <% _.each(categories, function(cat){ %>
+                                        <a href="javascript:;">
+                                            <%=_ .escape(cat.title) %>
+                                        </a>
+                                        <% }); %>
+                                </div>
+                                <% } %>
+                                    <h2><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 6 - CUBIC HOVER-->
+    <script type="text/template" id="tpl-item-style6">
+        <div class="grid-item tpl-item-style6 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);">
+                <div class="entry-hover">
+                    <div class="inner-table">
+                        <div class="inner-row">
+                            <h2><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h2>
+                            <% if (typeof(categories) !="undefined" ) { %>
+                                <div class="categories">
+                                    <% _.each(categories, function(cat){ %>
+                                        <a href="javascript:;">
+                                            <%=_ .escape(cat.title) %>
+                                        </a>
+                                        <% }); %>
+                                </div>
+                                <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+
+    <!--Template: Item style 7 - GRAY SCALE-->
+    <script type="text/template" id="tpl-item-style7">
+        <div class="grid-item tpl-item-style7 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);">
+            <span style="background-image:url(<%= typeof(_logo)!== 'undefined' ?  _logo : '' %>);"></span>
+        </a>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 8 - TITLE BOTTOM HOVER-->
+    <script type="text/template" id="tpl-item-style8">
+        <div class="grid-item tpl-item-style8 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <div class="image" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);"></div>
+                <div class="hover">
+                    <span class="inner-table">
+                <span class="inner-row">
+                    <h3><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h3>
+                    <% if (typeof(categories) != "undefined") { %>
+                    <div class="categories">
+                        <% _.each(categories, function(cat){ %>
+                        <a href="javascript:;"><%= _.escape(cat.title) %></a>
+                        <% }); %>
+                    </div>
+                    <% } %>
+                </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 9 - FLIP EFFECT-->
+    <script type="text/template" id="tpl-item-style9">
+        <div class="grid-item tpl-item-style9 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <div class="front" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);"></div>
+                <div class="back">
+                    <span class="inner-table">
+                <span class="inner-row">
+                    <h3><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h3>
+                    <% if (typeof(categories) != "undefined") { %>
+                    <div class="categories">
+                        <% _.each(categories, function(cat){ %>
+                        <a href="javascript:;"><%= _.escape(cat.title) %></a>
+                        <% }); %>
+                    </div>
+                    <% } %>
+                </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 10 - AUTO FLIP EFFECT-->
+    <script type="text/template" id="tpl-item-style10">
+        <div class="grid-item tpl-item-style10 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <div class="front" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);">
+                    <a href="home-5.html#" class="post-permalink"></a>
+                </div>
+                <div class="back" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);">
+                    <a href="home-5.html#" class="post-permalink"></a>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="tpl-item-style11">
+        <div class="grid-item tpl-item-style11 <%= typeof(grid_size)!== 'undefined' ?  grid_size : '' %>" data-id="<%= id %>" style="<% if (typeof(categories) != " undefined ") { %>background-color:<%= _.last(categories).color %>;<% } %>">
+            <div class="grid-item-entry">
+                <div class="front" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);">
+                    <a href="home-5.html#" class="post-permalink"></a>
+                </div>
+                <div class="back" style="background-image:url(<%= typeof(thumb)!== 'undefined' ?  thumb : '' %>);">
+                    <a href="home-5.html#" class="post-permalink"></a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 1 - MASONRY FOR PORTFOLIO-->
+    <script type="text/template" id="tpl-masonry-style1">
+        <div class="grid-item tpl-masonry-style1" data-id="<%= id %>">
+            <div class="grid-item-entry">
+                <div class="entry-media">
+                    <a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><img src="http://template.themeton.com/gridx/&lt;%=&#32;typeof(thumb)!==&#32;'undefined'&#32;?&#32;&#32;thumb&#32;:&#32;''&#32;%&gt;">
+                    </a>
+                </div>
+                <div class="entry-meta">
+                    <h2><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h2>
+                    <% if (typeof(categories) !="undefined" ) { %>
+                        <div class="categories">
+                            <% _.each(categories, function(cat){ %>
+                                <a href="http://template.themeton.com/gridx/&lt;%=&#32;_.escape(cat.link)&#32;%&gt;">
+                                    <%=_ .escape(cat.title) %>
+                                </a>
+                                <% }); %>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 2 - MASONRY FOR POST FORMAT-->
+    <script type="text/template" id="tpl-masonry-style2">
+        <div class="grid-item tpl-masonry-style2" data-id="<%= id %>">
+            <div class="grid-item-entry entry-format-<%= format %>">
+                <% if (typeof(media) !="undefined" ) { %>
+                    <div class="entry-media">
+                        <%=m edia %>
+                    </div>
+                    <% } %>
+                        <div class="entry-meta">
+                            <h3><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h3>
+                            <div class="meta">
+                                <% if (typeof(categories) !="undefined" ) { %>
+                                    <span class="categories">
+                    <i class="icon_tag_alt"></i>
+                    <a href="http://template.themeton.com/gridx/&lt;%=&#32;_.last(categories).link&#32;%&gt;"><%= _.last(categories).title %></a>
+                </span>
+                                    <% } %>
+                                        <span class="date">
+                    <i class="icon_clock_alt"></i><%= date %>
+                </span>
+                            </div>
+                            <div class="excerpt">
+                                <%=e xcerpt %>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!--Template: Item style 3 - MASONRY-->
+    <script type="text/template" id="tpl-masonry-style3" data-id="<%= id %>">
+        <div class="grid-item tpl-masonry-style3">
+            <div class="grid-item-entry">
+                <% if (typeof(thumb) !="undefined" ) { %>
+                    <div class="entry-media">
+                        <a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;"><img src="http://template.themeton.com/gridx/&lt;%=&#32;thumb&#32;%&gt;">
+                        </a>
+                    </div>
+                    <% } %>
+                        <div class="entry-meta">
+                            <h3><a href="http://template.themeton.com/gridx/&lt;%=&#32;link&#32;%&gt;" class="post-permalink"><%= title %></a></h3>
+                            <div class="meta">
+                                <% if (typeof(categories) !="undefined" ) { %>
+                                    <span class="categories">
+                    <% _.each(categories, function(cat){ %>
+                    <a href="http://template.themeton.com/gridx/&lt;%=&#32;_.escape(cat.link)&#32;%&gt;"><%= _.escape(cat.title) %></a>
+                    <% }); %>
+                </span>
+                                    <% } %>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </script>
+    <!--Template: Push State-->
+    <script type="text/template" id="tpl-single-open-state">
+        <div class="open-state viewport-single-post">
+            <div class="entry-media">
+                <%=t ypeof(media)!=='undefined' ? media : '' %>
+            </div>
+            <div class="post-action">
+                <span class="actions">
+            <a href="javascript:;" class="prev">
+                <i class="switch-close arrow_carrot-left"></i>
+                <i class="switch-holder icon_grid-3x3"></i>
+            </a>
+            <a href="javascript:;" class="next"><i class="arrow_carrot-right"></i></a>
+            <a href="javascript:;" class="close"><i class="icon_close"></i></a>
+        </span>
+            </div>
+            <article>
+                <h2 class="post-title">
+            <%= title %>
+            <span class="share">
+                <a href="home-5.html#">
+                    <i class="switch-share icon_link_alt"></i>
+                    <i class="switch-item social_facebook"></i>
+                </a>
+                <a href="home-5.html#"><i class="social_googleplus"></i></a>
+                <a href="home-5.html#"><i class="social_twitter"></i></a>
+                <a href="home-5.html#"><i class="social_pinterest"></i></a>
+            </span>
+        </h2>
+                <%=c ontent %>
+                    <div class="meta row">
+                        <div class="col-md-6">
+                            <% if (typeof(categories) !="undefined" ) { %>
+                                <ul class="categories">
+                                    <% _.each(categories, function(cat){ %>
+                                        <li>
+                                            <a href="http://template.themeton.com/gridx/&lt;%=&#32;_.escape(cat.link)&#32;%&gt;">
+                                                <%=_ .escape(cat.title) %>
+                                            </a>
+                                        </li>
+                                        <% }); %>
+                                </ul>
+                                <% } %>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="date">
+                                <%=d ate %> <span class="comments">0 comments</span>
+                            </div>
+                        </div>
+                    </div>
+            </article>
+        </div>
+    </script>
+
+
+    <!--Template: Open GI-->
+    <script type="text/template" id="tpl-single-open-gi">
+        <div class="grid-open-gi">
+            <div class="panel-gi row">
+                <div class="col-md-7">
+                    <div class="entry-media">
+                        <%=t ypeof(media)!=='undefined' ? media : '' %>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <article>
+                        <h2 class="post-title"><%= title %></h2>
+                        <p>
+                            <%=e xcerpt %>
+                        </p>
+                    </article>
+
+                    <a href="javascript:;" class="item-action prev"><i class="arrow_carrot-left"></i></a>
+                    <a href="javascript:;" class="item-action next"><i class="arrow_carrot-right"></i></a>
+                </div>
+            </div>
+            <a href="javascript:;" class="close-viewport"><i class="icon_close"></i></a>
+        </div>
+    </script>
+
+
+    <!--Template: Modal-->
+    <script type="text/template" id="tpl-single-modal">
+        <div id="gx-single-modal" class="modal single-modal fade" role="dialog" aria-labelledby="single-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body"></div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+
+    <!--Template: Header Search-->
+    <script type="text/template" id="tpl-header-search">
+        <div class="search-template">
+            <div class="inner-table">
+                <div class="inner-row">
+                    <div class="container">
+                        <form role="search" method="get" class="search-form" action="blog.html">
+                            <div class="input-group">
+                                <input type="search" class="search-field" placeholder="Type and hit Enter ..." value="" name="s" autocomplete="off">
+                                <input type="submit" class="search-submit" value="Go">
+                                <a href="javascript:;" class="close-search"><i class="icon_close"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</head>
+
+<body class="header-transparent menu-light">
+
+    <!-- Document wrapper
+        ================================================== -->
+    <div class="wrapper">
+
+        <!-- Header
+            ================================================== -->
+        <header id="header" class="navbar navbar-default boxed">
+            <div class="container">
+
+                <!-- Logo
+                    ================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html" style="background-image:url(images/logo-light.png);">Grid X</a>
+                    <a class="navbar-brand retina" href="index.html" style="background-image:url(images/logo-light@2x.png);">Grid X</a>
+                </div>
+
+                <!-- Main navigation
+                    ================================================== -->
+                <nav>
+                    <ul class="nav navbar-nav main-menu">
+                        <li class="active"><a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="http://rainush.com/index.php?route=information/information&information_id=4">About Us</a>
+                        </li>
+                        <li>
+                            <a href="page.html">Coaching</a>
+                            <ul>
+                                <li><a href="http://pahaldesign.com/nift-coaching-program/">NIFT Coaching</a>
+                                </li>
+                                <li><a href="http://rainush.com/index.php?route=information/information&information_id=4">NID Coaching</a>
+                                </li>
+                                <li><a href="http://pahaldesign.com/nata-coaching-program/">NATA Coaching</a>
+                                </li>
+                                <li><a href="http://pahaldesign.com/ceed-coaching-program/">CEED Coaching</a>
+                                </li>
+                                <li><a href="http://pahaldesign.com/crash-course-program/">UCEED Coaching</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="headers.html">Rainush</a>
+                            <ul>
+                                <li><a href="http://rainush.com/index.php?route=information/information&information_id=4" target="_blank">About RAINUSH</a>
+                                </li>
+                                <li><a href="http://rainush.com/" target="_blank">Made to Measure</a>
+                                </li>
+                                <li><a href="http://rainush.com/index.php?route=information/information&information_id=4" target="_blank">Initiatives</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <!-- Top links
+                        ================================================== -->
+                    <!--
+    <ul class="nav navbar-nav navbar-right">
+        <li class="header-search-form"><a href="javascript:;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+        <li class="header-shop-cart"><a href="home-5.html#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        <li class="header-menu-icon"><a class="nav-main-trigger" href="javascript:;"><span class="nav-menu-icon"></span></a></li>
+    </ul>
+-->
+                </nav>
+            </div>
+        </header>
+
+
+        <!-- Top slider
+================================================== -->
+        <section class="top-slider fullwidth" data-height="600">
+            <!-- masterslider -->
+            <div class="master-slider ms-skin-default" id="masterslider">
+
+
+                <!-- new slide -->
+                <div class="ms-slide slide-1" data-delay="6">
+
+                    <!-- slide background -->
+                    <img src="http://template.themeton.com/gridx/masterslider/blank.gif" data-src="images/home5/home-5-1-bg.jpg" alt="Slide3 Background" />
+
+<!--                    <img src="http://template.themeton.com/gridx/masterslider/blank.gif" data-src="images/home5/home-5-tablet.png" alt="Tablet" style="right:0; bottom:0;" class="ms-layer" data-type="image" data-effect="bottom(200|800)" data-duration="500" data-delay="0" data-ease="easeInOutCubic" data-hide-effect="bottom(short)" />-->
+
+<!--
+                    <h1 class="ms-layer" style="left: 0;top: 180px; color:#fff; font-weight: 100; font-size: 48px;" data-type="text" data-effect="bottom(short)" data-duration="250" data-delay="500" data-hide-effect="fade">Dynamically restore team<br> building business value.</h1>
+
+                    <div class="ms-layer" style="left: 0;top: 360px; color:#fff; font-size: 24px;" data-effect="bottom(short)" data-duration="250" data-delay="750" data-ease="easeInCubic" data-hide-effect="fade">
+                        <a class="btn glass btn-success" href="home-5.html#">PURCHASE NOW</a>
+                    </div>
+
+                    <div class="ms-layer" style="left: 200px;top: 360px; color:#fff; font-size: 24px;" data-effect="bottom(short)" data-duration="250" data-delay="800" data-ease="easeInCubic" data-hide-effect="fade">
+                        <a class="btn styled btn-primary" href="home-5.html#">GET STARTED</a>
+                    </div>
+-->
+
+                </div>
+                <!-- end of slide -->
+
+
+                <!-- new slide -->
+                <div class="ms-slide slide-3" data-delay="8">
+
+                    <!-- slide background -->
+                    <img src="http://template.themeton.com/gridx/masterslider/blank.gif" data-src="images/home5/home-5-2-bg.jpg" alt="Slide3 Background" />
+<!--
+
+                    <img src="http://template.themeton.com/gridx/masterslider/blank.gif" data-src="images/home5/home-5-iphone.png" alt="iPhone" style="left:0; bottom:0;" class="ms-layer" data-type="image" data-effect="bottom(200|800)" data-duration="500" data-delay="0" data-ease="easeInOutCubic" data-hide-effect="bottom(short)" />
+-->
+
+<!--
+                    <div class="ms-layer slider-caption" data-type="text" data-effect="bottom(short)" data-duration="500" data-delay="500" data-ease="easeOutExpo" style="right:0;width:auto;text-align:right;">
+                        <h2 class="big-text text-white bold-text">GRID X THEME</h2>
+                    </div>
+
+                    <div class="ms-layer slider-caption" data-type="text" data-effect="bottom(short)" data-duration="500" data-delay="600" data-ease="easeOutExpo" style="right:5px;width:auto;text-align:right;top:58% !important">
+                        <p class="text-bold text-white thin-text small-text">Square Magazine Portfolio Blog Template
+                            <br>Competently maximize business metrics vis-a-vis efficient solutions.</p>
+                    </div>
+
+                    <button class="btn glass btn-success ms-layer" data-type="text" data-effect="bottom(short)" data-duration="250" data-delay="700" data-ease="easeOutExpo" style="bottom:110px;right:200px;width:auto;left:auto;">MORE FEATURES</button>
+                    <button class="btn btn-success styled ms-layer" data-type="text" data-effect="bottom(short)" data-duration="250" data-delay="750" data-ease="easeOutExpo" style="bottom:110px;right:0;width:auto;left:auto;">PURCHASE NOW</button>
+-->
+
+                </div>
+                <!-- end of slide -->
+
+
+
+                <!-- new slide -->
+                <div class="ms-slide slide-2" data-delay="8">
+
+                    <!-- slide background -->
+                    <img src="http://template.themeton.com/gridx/masterslider/blank.gif" data-src="images/home5/home-5-3-bg.jpg" alt="Slide3 Background" />
+
+<!--
+                    <img src="http://template.themeton.com/gridx/masterslider/blank.gif" data-src="images/home5/home-5-laptop.png" alt="iPhone" class="ms-layer" style="bottom:50px;left:185px;" data-type="image" data-effect="bottom(200|800)" data-duration="500" data-delay="0" data-ease="easeInOutCubic" data-hide-effect="bottom(short)" />
+
+                    <div class="ms-layer text-center slider-caption" data-type="text" data-effect="bottom(short)" data-duration="300" data-delay="500" data-ease="easeOutExpo">
+                        <h2 class="big-text text-white light-text">GRID X THEME</h2>
+                    </div>
+                    <div class="ms-layer slider-caption text-center" data-type="text" data-effect="bottom(short)" data-duration="300" data-delay="600" data-ease="easeOutExpo" style="top:56% !important">
+                        <p class="text-bold text-white thin-text small-text">Square Magazine Portfolio Blog Template</p>
+                    </div>
+-->
+
+                </div>
+                <!-- end of slide -->
+
+
+            </div>
+            <!-- end masterslider -->
+
+
+        </section>
+        <!-- Content
+            ================================================== -->
+        <section class="content no-padding-bottom">
+            <div class="container">
+
+                <div class="row padding2x no-padding-bottom">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h1 class="heading-dash style-light">Who are we?</h1>
+                            <p>We are a group of professionals working in the Indian design and fashion industry.
+                                <br>We aim to provide you with the latest and most up-to-date information regarding NIFT NID NATA CEED and UCEED.
+                                <br>We always strive towards ensuring a perfect career in design for you.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider line"></div>
+
+                <!-- Services -->
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="service-box style-center small" data-animate="fadeInUp">
+                            <div class="service-icon"><span class="icon_star_alt"></span>
+                            </div>
+                            <h3>NIFT</h3>
+                            <p>National Institute of Fashion Technology (NIFT) is a fashion institute in India. It was set up in 1986 under the aegis of the Ministry of Textiles, Government of India and is an institution of design, management and technology for the international fashion business.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="service-box style-center small" data-animate="fadeInUp">
+                            <div class="service-icon"><span class="icon_cloud-upload_alt"></span>
+                            </div>
+                            <h3>NID</h3>
+                            <p>The National Institute of Design (NID) is a design school in Ahmedabad, India. The institute functions as an autonomous body. Business Week has placed NID in its list of top design schools in the world.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="service-box style-center small" data-animate="fadeInUp">
+                            <div class="service-icon"><span class="icon_genius"></span>
+                            </div>
+                            <h3>NATA</h3>
+                            <p>The National Aptitude Test in Architecture (NATA), is conducted by National Institute of Advanced Studies in Architecture (NIASA). The National Aptitude Test in Architecture is a national level examination for admission to undergraduate courses in Architecture.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="service-box style-center small" data-animate="fadeInUp">
+                            <div class="service-icon"><span class="icon_mobile"></span>
+                            </div>
+                            <h3>(U)CEED</h3>
+                            <p>Common Entrance Examination for Design (CEED) is an all India examination conducted by IIT Bombay on behalf of the Ministry of Human Resources Development, Government of India to assess candidate's aptitude for design.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end .row -->
+                <div class="divider"></div>
+            </div>
+            <!-- end .container -->
+
+
+            <!-- Fullwidth section
+                ================================================== -->
+            <div class="fullwidth-section no-padding-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="images/home5/iphone-mockup.png" alt="Mockup" />
+                        </div>
+
+                        <div class="col-md-6 pull-right">
+                            <h2 style="font-weight:100;">Design Education</h2>
+                            <p>There is an extremely wide spectrum in the the level of design education that designers worldwide possess. That's because of different degree of cultural, financial and personal differences. In India, choosing design as a subject of higher study or profession is not quite easy due to lack of recognition and respect of the profession. This scenario is mostly exclusive to developing countries but there a lot of talented young designers who can't access the resources they should get.</p>
+                            <h4>Available opportunities</h4>
+                            <p>NID and NIFT are two world-class institutions offering higher education in design. However, many talented aspiring designers fail to secure a position in these prestigious colleges due to lack to preparation and confidence.</p>
+                            <h4>How to proceed</h4>
+                            <p>We have researched the design scenario in India, and aim to provide aspiring designers adequate preparation for entering reputed design colleges.</p>
+                        </div>
+                    </div>
+                    <!-- end .row -->
+                    <div class="divider no-padding"></div>
+                </div>
+                <!-- end .container -->
+            </div>
+            <!-- end .fullwidth-section -->
+
+
+            <!-- Fullwidth section
+                ================================================== -->
+            <div class="fullwidth-section padding2x no-padding-bottom">
+                <div class="container img-right-bottom" data-image="images/home5/laptop-mockup.png">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 style="font-weight:100;">Choose your future</h2>
+                            <p>You decide where you want to reach. We can make sure you get there. There are a lot of options for talented aspiring designers. </p>
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="home-5.html#collapseOne" aria-controls="collapseOne">
+                                                    National Institute of Design (NID)
+                                                </a>
+                                            </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <p>The National Institute of Design is a design school in Ahmedabad, India. The institute functions as an autonomous body under the Department of Industrial Policy and Promotion, Ministry of Commerce and Industry, government of India.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading collapsed" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="home-5.html#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    IIT Bombay (Industrial Design Center)
+                                                </a>
+                                            </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <p>Industrial Design Centre (IDC) is a premier design school in India, established in 1969, by the Government of India at the campus of Indian Institute of Technology, Mumbai (IIT Bombay).
+
+Industrial Design Centre has been one of the leading design schools in India. It offers Master of Design degree (M.Des) programs in Industrial Design, Visual Communication, Animation Design, Interaction Design & Mobility and Vehicle Design as well as a Ph.D program in Design, conducive environment for research, academics and collaborative projects. Supported by the excellent research facilities, technical expertise and academic diversity of IIT-B, IDC has been involved with various initiatives in all areas of design and continues to flourish and grow.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading collapsed" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="home-5.html#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    National Institute of Fashion technology (NIFT)
+                                                </a>
+                                            </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="panel-body">
+                                            <p>National Institute of Fashion Technology (NIFT) is a fashion institute in India. It was set up in 1986 under the aegis of the Ministry of Textiles, Government of India and is an institution of design, management and technology for the international fashion business.
+
+NIFT was granted statutory status in 2006, empowering it to award degrees and other academic distinctions.
+
+With its head office in New Delhi, NIFT has centers at Mumbai, Kolkata, Kangra, Gandhinagar, Hyderabad, Chennai, Bangalore, Raebareli, Patna, Shillong, Bhopal, Kannur, Bhubaneswar and Jodhpur where it offers four-year bachelor and two-year master programmes in the areas of Design, Management and Technology.
+
+A new NIFT Campus at Ludhiana, Punjab has been announced by Minister of Textiles. A new center in Ompora Industrial area, Kashmir, too, is expected to come up.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading collapsed" role="tab" id="headingFour">
+                                        <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="home-5.html#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                    Pearl Academy
+                                                </a>
+                                            </h4>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                        <div class="panel-body">
+                                            <p>Pearl Academy (formerly Pearl Academy of Fashion) is a private higher education institute in India, offering undergraduate, postgraduate and diploma courses in design, fashion and business.
+
+It has been ranked Number 1 Design School (North India), and Number 2 Fashion School (All India) in the 2014 Edutainment Awards.[1] For academics it has been ranked by Hindustan Times as Number 1 institute in India for 'Pedagogic Procedures and Processes' (2010) and Number 1 in 'Competence of Faculty' (2009).</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading collapsed" role="tab" id="headingFive">
+                                        <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="home-5.html#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                    Royal College of Art, London
+                                                </a>
+                                            </h4>
+                                    </div>
+                                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                        <div class="panel-body">
+                                            <p>The Royal College of Art (informally the RCA) is a public research university specializing in art and design located in London, United Kingdom. It is the world's only wholly postgraduate art and design institution offering Master of Arts (M.A.), Master of Philosophy (M.Phil.) and Doctor of Philosophy (Ph.D.) and was ranked the top university in the world for Art and Design in the QS World University rankings 2015, the first year in which the subject area has been included.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <button type="button" onclick="location.href='http://www.pahaldesign.com'" class="btn styled btn-primary">I NEED COACHING</button>
+                        </div>
+                        <!-- .col-* -->
+                        <div class="col-md-6">
+
+                            <img src="images/rainush.jpg" height="150" />
+                            <br>
+                            <br>
+                            <h2 style="font-weight:100;">Be guided by industry veterans</h2>
+                            <p>We have been preparing students to get admissions in reputed design colleges all over the world. At the same time we are also well connected with the design and fashion industry in India. This allows us to gauge the worth of each design course, and allows us to guide you in the best way possible.</p>
+                            <BR>
+                            <button type="button" onclick="window.location.href='http://www.rainush.com'" class="btn styled btn-primary">MORE ABOUT US</button>
+
+
+                        </div>
+                        <!-- .col-* -->
+                    </div>
+                    <!-- end .row -->
+                    <div class="space" data-height="60"></div>
+                </div>
+                <!-- end .container -->
+            </div>
+            <!-- end .fullwidth-section -->
+
+
+            <!-- Fullwidth section
+                ================================================== -->
+            <div class="fullwidth-section" style="background-color:rgba(0,0,0,.04);">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="heading-dash text-center"></h1>
+                        </div>
+                    </div>
+                    <!-- end .row -->
+                </div>
+                <!-- end .container -->
+            </div>
+            <!-- end .fullwidth-section -->
+
+
+            <!-- Fullwidth section
+                ================================================== -->
+
+            <!-- end .fullwidht-screen -->
+
+            <div class="fullwidth-section" style="background-color:white; color:#fff;" data-image="images/background/6.jpeg">
+                <div class="blurred-layer" style="background-color:#fb5857;"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="testimonials-slider" style="font-family: sans-serif;">
+                                <div class="testimonial with-thumb style-centered">
+
+                                    <blockquote>
+                                        <p>My favorite things in life don't cost any money. It's really clear that the most precious resource we all have is time.</p>
+                                        <footer>Steve Jobs <span>Apple Inc.</span>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                                <div class="testimonial">
+                                    <blockquote>
+                                        <p>I think it's fair to say that personal computers have become the most empowering tool we've ever created. They're tools of communication, they're tools of creativity.</p>
+                                        <footer>Bill Gates <span>Microsoft Corporation.</span>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <!-- .testimonials-slider -->
+                        </div>
+                        <!-- .col-* -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .container -->
+            </div>
+            <!-- .fullwidth-section -->
+
+        </section>
+        <!-- .content -->
+
+
+        <!-- Footer
+================================================== -->
+        <footer id="footer" style="padding-bottom: 30px;">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-6 col-md-9">
+
+                    </div>
+
+                    <!-- .col-md-3 -->
+                    <div class="col-sm-6 col-md-3">
+                        <aside class="widget widget_social clearfix">
+                            <h3 class="widget-title">Reach out to us</h3>
+                            <ul>
+                                <li>
+                                    <a href="home-5.html#" class="social_facebook" title="Facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="home-5.html#" class="social_twitter"></a>
+                                </li>
+                                <li>
+                                    <a href="home-5.html#" class="social_pinterest"></a>
+                                </li>
+                                <li>
+                                    <a href="home-5.html#" class="social_instagram"></a>
+                                </li>
+                                <li>
+                                    <a href="home-5.html#" class="social_googleplus"></a>
+                                </li>
+                            </ul>
+                        </aside>
+
+
+                    </div>
+                    <!-- .col-md-3 -->
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                Designed by <a href="http://pixelblenders.com">PixelBlenders</a>
+                        </div>
+                    <div class="col-sm-3">
+                    &copy;2015 RAINUSH Couture Boutique
+                    </div>
+                </div>
+
+                <!-- .row -->
+            </div>
+            <!-- .container -->
+        </footer>
+
+        <!-- Back to top anchor -->
+        <span class="back-to-top"></span>
+
+
+    </div>
+    <!-- end .wrapper -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/grid.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+</body>
+
+</html>
